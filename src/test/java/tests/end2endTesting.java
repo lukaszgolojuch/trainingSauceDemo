@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-public class e2eTests extends BaseTest {
+public class end2endTesting extends BaseTest {
 
     LoginPage loginPage;
     InventoryPage inventoryPage;
@@ -32,8 +32,7 @@ public class e2eTests extends BaseTest {
         cartPage.assertCorrectUrlIsDisplayed();
         cartPage.clickCheckoutButton();
         checkoutStepOnePage.assertCorrectUrlIsDisplayed();
-        checkoutStepOnePage.fillAndSubmitCheckoutForm(
-                "John", "Doe", "12345");
+        checkoutStepOnePage.fillAndSubmitCheckoutForm("John", "Doe", "12345");
         checkoutStepTwoPage.assertCorrectUrlIsDisplayed();
         checkoutStepTwoPage.clickFinishButton();
         checkoutComplete.assertCorrectUrlIsDisplayed();
