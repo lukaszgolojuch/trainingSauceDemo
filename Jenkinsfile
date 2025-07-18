@@ -1,19 +1,33 @@
 pipeline {
     agent any
+
+    tools {
+        jdk 'jdk17'
+        gradle 'gradle-8'
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 git 'https://github.com/lukaszgolojuch/trainingSauceDemo'
             }
         }
-        stage('Build') {
+
+        stage('Install Browsers') {
             steps {
-                echo 'Budowanie projektu...'
+                sh './gradlew playwrightInstall'
             }
         }
-        stage('Test') {
+
+        stage('Run Tests') {
             steps {
-                echo 'Uruchamianie testów...'
+                sh './gradlew test'
+            }
+        }
+
+        stage('Publish JUnit Results') {
+            steps {
+                junit '**/build/test-results/test/*.xml'
             }
         }
     }

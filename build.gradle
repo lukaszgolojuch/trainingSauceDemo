@@ -21,4 +21,7 @@ test {
             includeTags project.property('runTags').split(',')
         }
     }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
