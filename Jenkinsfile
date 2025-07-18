@@ -4,13 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/lukaszgolojuch/trainingSauceDemo'
-            }
-        }
-
-        stage('Install Browsers') {
-            steps {
-                sh './gradlew playwrightInstall'
+                git 'https://github.com/lukaszgolojuch/trainingSauceDemo.git'
             }
         }
 
@@ -20,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Publish JUnit Results') {
+        stage('Publish Results') {
             steps {
                 junit '**/build/test-results/test/*.xml'
             }
