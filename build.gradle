@@ -1,4 +1,4 @@
-nplugins {
+plugins {
     id 'java'
 }
 
